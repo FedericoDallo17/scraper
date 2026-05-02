@@ -59,6 +59,8 @@ Sources are first-class:
 
 One search can run against multiple compatible sources.
 
+`Source` uses a unique `slug` as its public identifier.
+
 ## Execution
 
 Each source-specific search execution is recorded as:

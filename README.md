@@ -27,6 +27,18 @@ The goal is **not** to avoid AI because of lack of skill. The goal is to avoid o
 - multiuser design from the start
 - Rails-native auth foundation from the start, with product-facing auth flows expanded later
 
+## Current Status
+
+Completed:
+
+- Rails 8 reset
+- project rules and roadmap docs
+- Rails-native authentication foundation (`User`, `Session`, sessions/password reset flow)
+
+Current focus:
+
+- `KAN-12` — source catalog
+
 ## Domain
 
 The project supports two search domains:
@@ -137,7 +149,7 @@ At minimum, review:
 - establish project docs and rules
 
 ### Phase 1 — Core domain
-- add Rails-native auth foundation (`User`, `Session`)
+- add Rails-native auth foundation (`User`, `Session`) ✅
 - add `Search`, `JobSearch`, `HomeSearch`
 - add `Source` and `SearchSource`
 - add runs / executions

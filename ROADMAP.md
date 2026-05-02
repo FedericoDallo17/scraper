@@ -36,7 +36,7 @@ Create a domain model that is explicit, multiuser-ready, and able to support bot
 - `SearchRunResult`
 
 ### Tasks
-1. Install Rails 8 authentication with the native generator so `User` and `Session` follow Rails conventions from the start.
+1. Install Rails 8 authentication with the native generator so `User` and `Session` follow Rails conventions from the start. ✅
 2. Model `JobSearch` and `HomeSearch` explicitly.
 3. Add `Search` with shared metadata and `delegated_type :searchable`.
 4. Add `Source` as a first-class entity for scraper sources.
@@ -167,7 +167,7 @@ Fields:
 - index `job_results.job_id`
 
 ### Acceptance criteria
-- Rails authentication base is installed and working
+- Rails authentication base is installed and working ✅
 - delegated type is working cleanly
 - searches can be created for both domains
 - one search can be linked to multiple compatible sources

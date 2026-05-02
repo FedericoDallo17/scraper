@@ -10,9 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_02_025553) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_02_041119) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "home_searches", force: :cascade do |t|
+    t.integer "area_max"
+    t.integer "area_min"
+    t.datetime "created_at", null: false
+    t.integer "price_max"
+    t.integer "price_min"
+    t.integer "rooms"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_searches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "mode"
+    t.string "query", null: false
+    t.integer "salary_max"
+    t.integer "salary_min"
+    t.string "seniority"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.string "notes"
+    t.bigint "searchable_id", null: false
+    t.string "searchable_type", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_searches_on_searchable"
+    t.index ["user_id"], name: "index_searches_on_user_id"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -45,5 +78,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_02_025553) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "searches", "users"
   add_foreign_key "sessions", "users"
 end

@@ -58,6 +58,10 @@ Create a domain model that is explicit, multiuser-ready, and able to support bot
 - name / label
 - delegated searchable reference
 
+Implementation note:
+- `Search` and its delegated record should be created as one invariant
+- if manual creation becomes cumbersome, add a transactional constructor/factory that persists both sides together
+
 ### Source model
 - `slug`
 - `name`
@@ -83,18 +87,14 @@ Current source rules:
 
 ### Initial `JobSearch` fields
 - query
-- location
-- remote_mode
+- mode
 - seniority
 - salary_min
 - salary_max
 
 ### Initial `HomeSearch` fields
-- operation_type
-- location
 - price_min
 - price_max
-- currency
 - rooms
 - area_min
 - area_max

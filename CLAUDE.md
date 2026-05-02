@@ -24,6 +24,14 @@ Before making significant changes, review:
 5. Use AI as support, not autopilot.
 6. Do not introduce code that cannot be clearly explained.
 
+## Collaboration workflow
+
+1. Start by identifying the next concrete step.
+2. Clarify what needs to be done before writing code.
+3. Keep important design decisions and critical thinking with the developer.
+4. Use AI for mechanical work, test support, documentation updates, branch creation, and senior-level review.
+5. After the developer implements a slice, review it critically and discuss tradeoffs before moving on.
+
 ## Architectural direction
 
 1. Rails 8 monolith.

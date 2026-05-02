@@ -34,21 +34,21 @@ Searches are modeled with delegated types:
 
 ### `JobSearch`
 - query
-- location
-- remote_mode
+- mode
 - seniority
 - salary_min
 - salary_max
 
 ### `HomeSearch`
-- operation_type
-- location
 - price_min
 - price_max
-- currency
 - rooms
 - area_min
 - area_max
+
+### Delegated type note
+- `Search` and its typed record should be created together
+- if this becomes awkward in practice, add a transactional constructor/factory rather than relaxing the invariant
 
 ## Sources
 

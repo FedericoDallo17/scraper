@@ -1,0 +1,32 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+# == Schema Information
+#
+# Table name: job_searches
+#
+#  id         :bigint           not null, primary key
+#  mode       :string
+#  query      :string           not null
+#  salary_max :integer
+#  salary_min :integer
+#  seniority  :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+one:
+  query: "Junior React Developer"
+  salary_min: 50000
+  salary_max: 100000
+  seniority: "junior"
+  mode: "remote"
+
+two:
+  query: "Senior Full Stack Developer"
+  salary_min: 100000
+  salary_max: 150000
+  seniority: "senior"
+  mode: "on_site"

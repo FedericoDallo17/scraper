@@ -84,22 +84,23 @@ and canonical domain entities:
 ### Initial job search fields
 
 - query
-- location
-- remote_mode
+- mode
 - seniority
 - salary_min
 - salary_max
 
 ### Initial home search fields
 
-- operation_type
-- location
 - price_min
 - price_max
-- currency
 - rooms
 - area_min
 - area_max
+
+### Delegated search creation note
+
+- `Search` and its typed record should preserve a shared invariant
+- if creation flows become awkward, prefer a transactional constructor/factory over weakening that invariant
 
 ### Result model direction
 

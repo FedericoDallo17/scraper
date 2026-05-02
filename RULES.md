@@ -78,19 +78,15 @@ The goal is not to avoid AI because of lack of skill. The goal is to use this pr
 ### Initial JobSearch Fields
 
 - `query`
-- `location`
-- `remote_mode`
+- `mode`
 - `seniority`
 - `salary_min`
 - `salary_max`
 
 ### Initial HomeSearch Fields
 
-- `operation_type`
-- `location`
 - `price_min`
 - `price_max`
-- `currency`
 - `rooms`
 - `area_min`
 - `area_max`
@@ -155,7 +151,14 @@ Base deduplication uses:
 2. Prefer small commits.
 3. Prefer small PRs.
 4. Keep one coherent feature or change per PR.
-5. Before merge, ensure:
+5. Use the following collaboration workflow with AI support:
+   - define the next step before implementing
+   - clarify what needs to be done
+   - keep important decisions and critical thinking with the developer
+   - delegate mechanical work, test support, documentation, and review support to AI when useful
+   - let AI create the working branch when requested
+   - after implementation, use AI for senior-level review and tradeoff discussion
+6. Before merge, ensure:
    - tests are green
    - lint is clean
    - minimum docs are updated

@@ -34,10 +34,11 @@ Completed:
 - Rails 8 reset
 - project rules and roadmap docs
 - Rails-native authentication foundation (`User`, `Session`, sessions/password reset flow)
+- source catalog foundation (`Source` with slug-based routing)
 
 Current focus:
 
-- `KAN-12` — source catalog
+- `KAN-13` — typed search models
 
 ## Domain
 
@@ -76,6 +77,7 @@ and canonical domain entities:
 ### Sources
 
 - `Source` is a first-class model
+- `Source` uses a unique `slug` as its public identifier
 - one `Search` can run against multiple sources through `SearchSource`
 - source compatibility is enforced by search type
 
@@ -150,8 +152,9 @@ At minimum, review:
 
 ### Phase 1 — Core domain
 - add Rails-native auth foundation (`User`, `Session`) ✅
+- add `Source` catalog foundation ✅
 - add `Search`, `JobSearch`, `HomeSearch`
-- add `Source` and `SearchSource`
+- add `SearchSource`
 - add runs / executions
 - add canonical `Home` / `Job`
 - add typed results and run appearances

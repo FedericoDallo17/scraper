@@ -39,7 +39,7 @@ Create a domain model that is explicit, multiuser-ready, and able to support bot
 1. Install Rails 8 authentication with the native generator so `User` and `Session` follow Rails conventions from the start. ✅
 2. Model `JobSearch` and `HomeSearch` explicitly.
 3. Add `Search` with shared metadata and `delegated_type :searchable`.
-4. Add `Source` as a first-class entity for scraper sources.
+4. Add `Source` as a first-class entity for scraper sources. ✅
 5. Add `SearchSource` so one search can run against many sources.
 6. Add `SearchRun` to track executions per search-source pair.
 7. Add canonical domain entities `Home` and `Job`.
@@ -59,11 +59,18 @@ Create a domain model that is explicit, multiuser-ready, and able to support bot
 - delegated searchable reference
 
 ### Source model
-- `key`
+- `slug`
 - `name`
 - `kind` (`job` or `home`)
 - `base_url`
 - `active`
+
+Current source rules:
+- `slug` is the public identifier used in routes
+- `slug` is unique
+- `name` is unique
+- `base_url` is unique
+- `kind` is indexed
 
 ### Search-source link
 - `search_id`
@@ -156,7 +163,9 @@ Fields:
 
 ### Critical indexes and constraints
 - unique `users.email_address`
-- unique `sources.key`
+- unique `sources.slug`
+- unique `sources.name`
+- unique `sources.base_url`
 - unique `search_sources(search_id, source_id)`
 - unique `search_results(source_id, external_id)`
 - unique `search_run_results(search_run_id, search_result_id)`
@@ -168,6 +177,7 @@ Fields:
 
 ### Acceptance criteria
 - Rails authentication base is installed and working ✅
+- source catalog foundation is implemented ✅
 - delegated type is working cleanly
 - searches can be created for both domains
 - one search can be linked to multiple compatible sources

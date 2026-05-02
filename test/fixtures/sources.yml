@@ -1,0 +1,46 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+# == Schema Information
+#
+# Table name: sources
+#
+#  id         :bigint           not null, primary key
+#  active     :boolean          default(TRUE), not null
+#  base_url   :string           not null
+#  kind       :string           not null
+#  name       :string           not null
+#  slug       :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_sources_on_base_url  (base_url) UNIQUE
+#  index_sources_on_kind      (kind)
+#  index_sources_on_name      (name) UNIQUE
+#  index_sources_on_slug      (slug) UNIQUE
+#
+one:
+  name: Mercado Libre
+  slug: mercado_libre
+  active: true
+  base_url: www.mercadolibre.com
+  kind: home
+
+two:
+  name: Linkedin
+  slug: linkedin
+  active: true
+  base_url: www.linkedin.com
+  kind: job
+
+three:
+  name: Gallito Luis
+  slug: gallito_luis
+  active: false
+  base_url: www.gallito.com.uy
+  kind: job

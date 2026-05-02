@@ -36,10 +36,11 @@ Completed:
 - Rails-native authentication foundation (`User`, `Session`, sessions/password reset flow)
 - source catalog foundation (`Source` with slug-based routing)
 - `KAN-13` — typed search models (`Search`, `JobSearch`, `HomeSearch` with delegated type)
+- `KAN-14` — source compatibility resolution on `Search` (`source_kind`, `compatible_sources`)
 
 Current focus:
 
-- `KAN-14` — `SearchSource` compatibility and multi-source search linking
+- `KAN-15` — `SearchRun` execution tracking foundation
 
 ## Domain
 
@@ -79,8 +80,15 @@ and canonical domain entities:
 
 - `Source` is a first-class model
 - `Source` uses a unique `slug` as its public identifier
-- one `Search` can run against multiple sources through `SearchSource`
-- source compatibility is enforced by search type
+- searches should resolve all active compatible sources automatically
+- `JobSearch` runs against active `job` sources
+- `HomeSearch` runs against active `home` sources
+- per-search source overrides should wait until a real product need exists
+
+Decision note:
+
+- the earlier `SearchSource` direction was intentionally dropped because it added configurability without a real product need
+- the current scope favors automatic compatible-source resolution and keeps per-search source overrides for a future justified case
 
 ### Initial job search fields
 
@@ -157,7 +165,7 @@ At minimum, review:
 - add Rails-native auth foundation (`User`, `Session`) ✅
 - add `Source` catalog foundation ✅
 - add `Search`, `JobSearch`, `HomeSearch` ✅
-- add `SearchSource`
+- add source compatibility resolution on `Search` ✅
 - add runs / executions
 - add canonical `Home` / `Job`
 - add typed results and run appearances

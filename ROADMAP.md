@@ -26,7 +26,6 @@ Create a domain model that is explicit, multiuser-ready, and able to support bot
 - `JobSearch`
 - `HomeSearch`
 - `Source`
-- `SearchSource`
 - `SearchRun`
 - `Home`
 - `Job`
@@ -40,7 +39,7 @@ Create a domain model that is explicit, multiuser-ready, and able to support bot
 2. Model `JobSearch` and `HomeSearch` explicitly. ✅
 3. Add `Search` with shared metadata and `delegated_type :searchable`. ✅
 4. Add `Source` as a first-class entity for scraper sources. ✅
-5. Add `SearchSource` so one search can run against many sources.
+5. Add source compatibility resolution on `Search` so one search runs against all active compatible sources by default. ✅
 6. Add `SearchRun` to track executions per search-source pair.
 7. Add canonical domain entities `Home` and `Job`.
 8. Add `SearchResult` with `delegated_type :resultable` to `HomeResult` and `JobResult`.
@@ -76,14 +75,16 @@ Current source rules:
 - `base_url` is unique
 - `kind` is indexed
 
-### Search-source link
-- `search_id`
-- `source_id`
-- `active`
+### Search-source resolution
+- `Search` should expose a way to resolve compatible sources
+- compatible sources are active sources whose `kind` matches the search type
+- `JobSearch` resolves active `job` sources
+- `HomeSearch` resolves active `home` sources
+- do not add per-search source overrides until a real product need appears
 
-`SearchSource` must validate compatibility:
-- `JobSearch` only with `job` sources
-- `HomeSearch` only with `home` sources
+Scope note:
+- this replaced the earlier `SearchSource` idea
+- the earlier scope is considered outdated until a real need for per-search source selection appears
 
 ### Initial `JobSearch` fields
 - query
@@ -100,7 +101,8 @@ Current source rules:
 - area_max
 
 ### `SearchRun` fields
-- `search_source_id`
+- `search_id`
+- `source_id`
 - `status`
 - `started_at`
 - `finished_at`
@@ -166,21 +168,21 @@ Fields:
 - unique `sources.slug`
 - unique `sources.name`
 - unique `sources.base_url`
-- unique `search_sources(search_id, source_id)`
 - unique `search_results(source_id, external_id)`
 - unique `search_run_results(search_run_id, search_result_id)`
 - index `searches.user_id`
 - index `searches(searchable_type, searchable_id)`
-- index `search_runs.search_source_id`
+- index `search_runs.search_id`
+- index `search_runs.source_id`
 - index `home_results.home_id`
 - index `job_results.job_id`
 
 ### Acceptance criteria
 - Rails authentication base is installed and working ✅
 - source catalog foundation is implemented ✅
-- delegated type is working cleanly
-- searches can be created for both domains
-- one search can be linked to multiple compatible sources
+- delegated type is working cleanly ✅
+- searches can be created for both domains ✅
+- one search can resolve all active compatible sources by type ✅
 - runs, canonical records, and results can be associated correctly
 - each run can record result appearances independently
 - uniqueness and indexes reflect the real access patterns
@@ -328,7 +330,7 @@ If starting implementation now, the recommended order is:
 2. add `Source`
 3. add `JobSearch` and `HomeSearch`
 4. add `Search` with delegated type
-5. add `SearchSource`
+5. add source compatibility resolution on `Search` ✅
 6. add `SearchRun`
 7. add `Home` and `Job`
 8. add `SearchResult`, `HomeResult`, and `JobResult`

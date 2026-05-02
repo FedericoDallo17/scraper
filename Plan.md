@@ -55,9 +55,12 @@ Searches are modeled with delegated types:
 Sources are first-class:
 
 - `Source`
-- `SearchSource`
 
-One search can run against multiple compatible sources.
+One search should run against all active compatible sources by default.
+
+- `JobSearch` uses active `job` sources
+- `HomeSearch` uses active `home` sources
+- introduce per-search source overrides only when a real use case appears
 
 `Source` uses a unique `slug` as its public identifier.
 

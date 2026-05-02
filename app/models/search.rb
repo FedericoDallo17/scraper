@@ -26,6 +26,14 @@ class Search < ApplicationRecord
 
   belongs_to :user
 
+  def source_kind
+    searchable_type.delete_suffix("Search").underscore
+  end
+
+  def compatible_sources
+    Source.active.where(kind: source_kind)
+  end
+
   validates :name, presence: true
   validates :active, presence: true, inclusion: [ true, false ]
   validates :searchable, presence: true

@@ -72,8 +72,9 @@ The goal is not to avoid AI because of lack of skill. The goal is to use this pr
 ### Source Modeling
 
 - `Source` is a first-class entity
-- a `Search` may run against multiple sources through `SearchSource`
+- a `Search` should resolve all active compatible sources by default
 - source compatibility should be enforced by search type
+- per-search source configuration should not be introduced until there is a real product need for it
 
 ### Initial JobSearch Fields
 

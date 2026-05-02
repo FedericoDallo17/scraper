@@ -21,6 +21,8 @@
 class Source < ApplicationRecord
   enum :kind, { job: "job", home: "home" }
 
+  scope :active, -> { where(active: true) }
+
   validates :active, presence: true, inclusion: [ true, false ]
   validates :base_url, presence: true
   validates :base_url, uniqueness: true

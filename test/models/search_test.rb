@@ -70,4 +70,27 @@ class SearchTest < ActiveSupport::TestCase
 
     assert_predicate search, :active?
   end
+
+  test "returns job as source kind for job searches" do
+    assert_equal "job", searches(:one).source_kind
+  end
+
+  test "returns home as source kind for home searches" do
+    assert_equal "home", searches(:two).source_kind
+  end
+
+  test "returns only active compatible sources for job searches" do
+    assert_equal [ sources(:two) ], searches(:one).compatible_sources.to_a
+  end
+
+  test "returns only active compatible sources for home searches" do
+    assert_equal [ sources(:one) ], searches(:two).compatible_sources.to_a
+  end
+
+  test "does not mix source kinds in compatible sources" do
+    sources = searches(:one).compatible_sources
+
+    assert_not_includes sources, sources(:one)
+    assert_not_includes sources, sources(:three)
+  end
 end

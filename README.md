@@ -35,10 +35,11 @@ Completed:
 - project rules and roadmap docs
 - Rails-native authentication foundation (`User`, `Session`, sessions/password reset flow)
 - source catalog foundation (`Source` with slug-based routing)
+- `KAN-13` — typed search models (`Search`, `JobSearch`, `HomeSearch` with delegated type)
 
 Current focus:
 
-- `KAN-13` — typed search models
+- `KAN-14` — `SearchSource` compatibility and multi-source search linking
 
 ## Domain
 
@@ -84,22 +85,23 @@ and canonical domain entities:
 ### Initial job search fields
 
 - query
-- location
-- remote_mode
+- mode
 - seniority
 - salary_min
 - salary_max
 
 ### Initial home search fields
 
-- operation_type
-- location
 - price_min
 - price_max
-- currency
 - rooms
 - area_min
 - area_max
+
+### Delegated search creation note
+
+- `Search` and its typed record should preserve a shared invariant
+- if creation flows become awkward, prefer a transactional constructor/factory over weakening that invariant
 
 ### Result model direction
 
@@ -142,6 +144,7 @@ At minimum, review:
 - prioritize model, scraper, job, and integration tests
 - keep changes small and reviewable
 - keep docs current when decisions or workflows change
+- when a ticket is committed and closed, update docs with shipped changes, relevant decisions, and the new current status/focus
 
 ## Roadmap
 
@@ -153,7 +156,7 @@ At minimum, review:
 ### Phase 1 — Core domain
 - add Rails-native auth foundation (`User`, `Session`) ✅
 - add `Source` catalog foundation ✅
-- add `Search`, `JobSearch`, `HomeSearch`
+- add `Search`, `JobSearch`, `HomeSearch` ✅
 - add `SearchSource`
 - add runs / executions
 - add canonical `Home` / `Job`

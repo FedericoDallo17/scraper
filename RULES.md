@@ -78,19 +78,15 @@ The goal is not to avoid AI because of lack of skill. The goal is to use this pr
 ### Initial JobSearch Fields
 
 - `query`
-- `location`
-- `remote_mode`
+- `mode`
 - `seniority`
 - `salary_min`
 - `salary_max`
 
 ### Initial HomeSearch Fields
 
-- `operation_type`
-- `location`
 - `price_min`
 - `price_max`
-- `currency`
 - `rooms`
 - `area_min`
 - `area_max`
@@ -155,7 +151,22 @@ Base deduplication uses:
 2. Prefer small commits.
 3. Prefer small PRs.
 4. Keep one coherent feature or change per PR.
-5. Before merge, ensure:
+5. Use the following collaboration workflow with AI support:
+   - define the next step before implementing
+   - clarify what needs to be done
+   - explicitly define what the developer should do and what the AI should do for each step
+   - keep important decisions and critical thinking with the developer
+   - the developer should own design decisions, domain modeling, and critical thinking
+   - because this is a portfolio project, the developer should prioritize work that adds real learning and portfolio value
+   - delegate to AI only the mechanical work that adds little value when done manually
+   - delegate mechanical work, test support, documentation, and review support to AI when useful
+   - the AI should own mechanical work, branch creation, test support, documentation support, and senior-level review
+   - let AI create the working branch when requested
+   - once a ticket is committed and considered closed, update the documentation before moving on
+   - that documentation update should include completed changes, relevant decisions when they matter, and the current project status
+   - project status updates should keep ticket state current and make the next active focus explicit
+   - after implementation, use AI for senior-level review and tradeoff discussion
+6. Before merge, ensure:
    - tests are green
    - lint is clean
    - minimum docs are updated
@@ -175,6 +186,7 @@ Even if the project is currently solo-developed, changes should be made as if fu
 2. Important decisions should be captured in lightweight ADRs.
 3. Documentation should explain **why**, not restate obvious code.
 4. New scraping sources should have traceable rationale when needed.
+5. When a ticket is closed, documentation should be updated to reflect shipped changes, important decisions, and the new current status/focus.
 
 ## Definition of Done
 

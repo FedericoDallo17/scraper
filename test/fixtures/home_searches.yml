@@ -1,0 +1,32 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+# == Schema Information
+#
+# Table name: home_searches
+#
+#  id         :bigint           not null, primary key
+#  area_max   :integer
+#  area_min   :integer
+#  price_max  :integer
+#  price_min  :integer
+#  rooms      :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+one:
+  area_min: 50
+  area_max: 100
+  price_min: 100000
+  price_max: 150000
+  rooms: 3
+
+two:
+  area_min: 80
+  area_max: 120
+  price_min: 150000
+  price_max: 200000
+  rooms: 4

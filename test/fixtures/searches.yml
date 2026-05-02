@@ -1,0 +1,42 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+# == Schema Information
+#
+# Table name: searches
+#
+#  id              :bigint           not null, primary key
+#  active          :boolean          default(TRUE), not null
+#  name            :string           not null
+#  notes           :string
+#  searchable_type :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  searchable_id   :bigint           not null
+#  user_id         :bigint           not null
+#
+# Indexes
+#
+#  index_searches_on_searchable  (searchable_type,searchable_id)
+#  index_searches_on_user_id     (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
+one:
+  name: "Junior React Developer"
+  notes: "This is my search for a junior React developer"
+  active: true
+  searchable: one (JobSearch)
+  user: one
+
+two:
+  name: "3-room apartment in the center"
+  notes: "This is my search for a 3-room apartment in the center of the city"
+  active: true
+  searchable: two (HomeSearch)
+  user: one

@@ -24,6 +24,19 @@ Before making significant changes, review:
 5. Use AI as support, not autopilot.
 6. Do not introduce code that cannot be clearly explained.
 
+## Collaboration workflow
+
+1. Start by identifying the next concrete step.
+2. Clarify what needs to be done before writing code.
+3. Explicitly define what the developer should do and what the AI should do for each step.
+4. Keep important design decisions, domain modeling, and critical thinking with the developer.
+5. Because this is a portfolio project, keep the work that adds real learning and portfolio value with the developer.
+6. Delegate to AI only the more mechanical work that adds little value when done manually.
+7. Use AI for mechanical work, test support, documentation updates, branch creation, and senior-level review.
+8. After the developer implements a slice, review it critically and discuss tradeoffs before moving on.
+9. Once a ticket has been committed and closed, update the project documentation before moving to the next ticket.
+10. Those documentation updates should cover the shipped changes, relevant decisions when needed, and the current project status/focus.
+
 ## Architectural direction
 
 1. Rails 8 monolith.
@@ -36,4 +49,5 @@ Before making significant changes, review:
 1. Functional changes should include relevant tests.
 2. Keep changes small and coherent.
 3. Update docs when decisions or workflows materially change.
-4. Prefer clarity over cleverness.
+4. After a ticket is closed, update docs to reflect completion and point to the next focus.
+5. Prefer clarity over cleverness.

@@ -37,8 +37,8 @@ Create a domain model that is explicit, multiuser-ready, and able to support bot
 
 ### Tasks
 1. Install Rails 8 authentication with the native generator so `User` and `Session` follow Rails conventions from the start. ✅
-2. Model `JobSearch` and `HomeSearch` explicitly.
-3. Add `Search` with shared metadata and `delegated_type :searchable`.
+2. Model `JobSearch` and `HomeSearch` explicitly. ✅
+3. Add `Search` with shared metadata and `delegated_type :searchable`. ✅
 4. Add `Source` as a first-class entity for scraper sources. ✅
 5. Add `SearchSource` so one search can run against many sources.
 6. Add `SearchRun` to track executions per search-source pair.
@@ -57,6 +57,10 @@ Create a domain model that is explicit, multiuser-ready, and able to support bot
 - active flag
 - name / label
 - delegated searchable reference
+
+Implementation note:
+- `Search` and its delegated record should be created as one invariant
+- if manual creation becomes cumbersome, add a transactional constructor/factory that persists both sides together
 
 ### Source model
 - `slug`
@@ -83,18 +87,14 @@ Current source rules:
 
 ### Initial `JobSearch` fields
 - query
-- location
-- remote_mode
+- mode
 - seniority
 - salary_min
 - salary_max
 
 ### Initial `HomeSearch` fields
-- operation_type
-- location
 - price_min
 - price_max
-- currency
 - rooms
 - area_min
 - area_max

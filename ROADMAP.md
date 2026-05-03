@@ -40,7 +40,7 @@ Create a domain model that is explicit, multiuser-ready, and able to support bot
 3. Add `Search` with shared metadata and `delegated_type :searchable`. ✅
 4. Add `Source` as a first-class entity for scraper sources. ✅
 5. Add source compatibility resolution on `Search` so one search runs against all active compatible sources by default. ✅
-6. Add `SearchRun` to track executions per search-source pair.
+6. Add `SearchRun` to track executions per search-source pair. ✅
 7. Add canonical domain entities `Home` and `Job`.
 8. Add `SearchResult` with `delegated_type :resultable` to `HomeResult` and `JobResult`.
 9. Add `SearchRunResult` to record each result appearance in each run.
@@ -183,7 +183,7 @@ Fields:
 - delegated type is working cleanly ✅
 - searches can be created for both domains ✅
 - one search can resolve all active compatible sources by type ✅
-- runs, canonical records, and results can be associated correctly
+- `SearchRun` can track compatible search/source executions with persisted status and failure summary ✅
 - each run can record result appearances independently
 - uniqueness and indexes reflect the real access patterns
 

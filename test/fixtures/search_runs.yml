@@ -1,0 +1,60 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+# == Schema Information
+#
+# Table name: search_runs
+#
+#  id            :bigint           not null, primary key
+#  error_class   :string
+#  error_message :string
+#  finished_at   :datetime
+#  results_count :integer
+#  started_at    :datetime
+#  status        :string           not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  search_id     :bigint           not null
+#  source_id     :bigint           not null
+#
+# Indexes
+#
+#  index_search_runs_on_search_id  (search_id)
+#  index_search_runs_on_source_id  (source_id)
+#  index_search_runs_on_status     (status)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (search_id => searches.id)
+#  fk_rails_...  (source_id => sources.id)
+#
+pending_job_run:
+  search: one
+  source: two
+  status: pending
+
+running_job_run:
+  search: one
+  source: two
+  status: running
+  started_at: 2026-05-03 10:00:00
+
+succeeded_job_run:
+  search: one
+  source: two
+  status: succeeded
+  started_at: 2026-05-03 09:00:00
+  finished_at: 2026-05-03 09:10:00
+  results_count: 3
+
+failed_home_run:
+  search: two
+  source: one
+  status: failed
+  started_at: 2026-05-03 08:00:00
+  finished_at: 2026-05-03 08:05:00
+  error_class: Timeout::Error
+  error_message: Source request timed out

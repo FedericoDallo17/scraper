@@ -37,10 +37,11 @@ Completed:
 - source catalog foundation (`Source` with slug-based routing)
 - `KAN-13` — typed search models (`Search`, `JobSearch`, `HomeSearch` with delegated type)
 - `KAN-14` — source compatibility resolution on `Search` (`source_kind`, `compatible_sources`)
+- `KAN-15` — `SearchRun` execution tracking foundation
 
 Current focus:
 
-- `KAN-15` — `SearchRun` execution tracking foundation
+- canonical `Home` / `Job` entities plus typed result models (`SearchResult`, `HomeResult`, `JobResult`, `SearchRunResult`)
 
 ## Domain
 
@@ -134,6 +135,14 @@ Each execution should persist enough information to understand:
 - how long it took
 - how many results were found
 - whether it failed or retried
+
+Current foundation:
+
+- `SearchRun` tracks each execution for a specific `search` + `source` pair
+- `SearchRun` statuses are `pending`, `running`, `succeeded`, and `failed`
+- successful runs must capture `results_count`
+- failed runs capture `error_class` and `error_message`
+- `SearchRun` rejects incompatible `search` / `source` combinations at the model layer
 
 ## Source Policy
 

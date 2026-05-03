@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_02_041119) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_03_043922) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -32,6 +32,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_02_041119) do
     t.integer "salary_min"
     t.string "seniority"
     t.datetime "updated_at", null: false
+  end
+
+  create_table "search_runs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "error_class"
+    t.string "error_message"
+    t.datetime "finished_at"
+    t.integer "results_count"
+    t.bigint "search_id", null: false
+    t.bigint "source_id", null: false
+    t.datetime "started_at"
+    t.string "status", null: false
+    t.datetime "updated_at", null: false
+    t.index ["search_id"], name: "index_search_runs_on_search_id"
+    t.index ["source_id"], name: "index_search_runs_on_source_id"
+    t.index ["status"], name: "index_search_runs_on_status"
   end
 
   create_table "searches", force: :cascade do |t|
@@ -78,6 +94,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_02_041119) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "search_runs", "searches"
+  add_foreign_key "search_runs", "sources"
   add_foreign_key "searches", "users"
   add_foreign_key "sessions", "users"
 end
